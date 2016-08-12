@@ -16,6 +16,9 @@ var cli = docopt.docopt(getUsage(cliSpec), {
   help: false
 });
 
+var ls = require('list-directory-contents');
+var concat = require('concat-files');
+
 // Builds the docopt usage from the spec
 function getUsage (cliSpec) {
   const usage =
@@ -47,6 +50,19 @@ var req = require('lazreq')({
 var Workspace = require('../lib/workspace');
 var VMTest = require('../lib/vmtest');
 var rc = Workspace.getDappleRC();
+
+//new part that takes all .sol files in /src and appends into one file
+//right now it does it regardless of options
+var src = path.join(__dirname, 'src')
+ls(src, function (err, tree) {
+  var sols = [];
+  for (var i = 0; i < tree.length; i++) {
+    if (tree[i].slice(-4) === ".sol") {
+      sols.push(tree[i]); 
+    }
+    concat(sols, path.join(__dirname, 'concat.sol'));
+  }
+});
 
 if (cli['--help']) {
   // get the package HEAD hash to identify the version
