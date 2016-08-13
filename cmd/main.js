@@ -90,7 +90,7 @@ if (cli['--help']) {
     cliSpec.options
       .map(o => o.name);
 
-  console.log(`dapple version: ${packageSpec.version}-${build.slice(0, 10)}\n\nUSAGE: dapple COMMAND [OPTIONS]\n\nCOMMANDS:\n    ${usage.join('\n    ')}\n\nOPTIONS:\n    ${options.join('\n     ')}`);
+  console.log(`mydapple version: ${packageSpec.version}-${build.slice(0, 10)}\n\nUSAGE: dapple COMMAND [OPTIONS]\n\nCOMMANDS:\n    ${usage.join('\n    ')}\n\nOPTIONS:\n    ${options.join('\n     ')}`);
 }
 
 if (cli.config || typeof (rc.path) === 'undefined') {
