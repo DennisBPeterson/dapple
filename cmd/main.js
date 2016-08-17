@@ -53,7 +53,8 @@ var rc = Workspace.getDappleRC();
 
 //new part that takes all .sol files in /src and appends into one file
 //right now it does it regardless of options
-var src = path.join(process.cwd(), 'contracts')
+var src = path.join(process.cwd(), 'contracts');
+console.log(src);
 ls(src, function (err, tree) {
   var sols = [];
   for (var i = 0; i < tree.length; i++) {
