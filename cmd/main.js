@@ -53,18 +53,21 @@ var rc = Workspace.getDappleRC();
 
 //new part that takes all .sol files in /src and appends into one file
 //right now it does it regardless of options
-var src = path.join(process.cwd(), 'contracts');
-console.log(src);
-ls(src, function (err, tree) {
-  var sols = [];
-  for (var i = 0; i < tree.length; i++) {
-    if (tree[i].slice(-4) === ".sol") {
-      sols.push(tree[i]); 
+console.log("log test");
+
+function concatSrc() {
+  var src = path.join(process.cwd(), 'contracts');
+  console.log(src);
+  ls(src, function (err, tree) {
+    var sols = [];
+    for (var i = 0; i < tree.length; i++) {
+      if (tree[i].slice(-4) === ".sol") {
+        sols.push(tree[i]); 
+      }
+      concat(sols, path.join(process.cwd(), 'concat.sol'));
     }
-    concat(sols, path.join(process.cwd(), 'concat.sol'));
-    console.log('printed to concat.sol');
-  }
-});
+  });
+}
 
 if (cli['--help']) {
   // get the package HEAD hash to identify the version
@@ -167,6 +170,7 @@ if (cli.install) {
 //
 } else if (cli.build) {
   console.log('Building...');
+  concatSrc();
 
   let workspace = Workspace.atPackageRoot();
   let env = cli['--environment'] || workspace.getEnvironment();
