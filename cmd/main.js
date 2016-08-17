@@ -60,7 +60,7 @@ ls(src, function (err, tree) {
     if (tree[i].slice(-4) === ".sol") {
       sols.push(tree[i]); 
     }
-    concat(sols, path.join(__dirname, 'concat.sol'));
+    concat(sols, path.join(process.cwd(), 'concat.sol'));
   }
 });
 
