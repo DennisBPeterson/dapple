@@ -65,6 +65,7 @@ function concatSrc() {
         sols.push(tree[i]); 
       }
       concat(sols, path.join(process.cwd(), 'concat.sol'));
+      console.log(process.cwd());
     }
   });
 }
