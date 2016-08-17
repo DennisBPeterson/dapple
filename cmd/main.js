@@ -170,7 +170,7 @@ if (cli.install) {
 // as if it were a package and commence with building.
 //
 } else if (cli.build) {
-  console.log('Building...');
+  console.log('Building building...');
   concatSrc();
 
   let workspace = Workspace.atPackageRoot();
