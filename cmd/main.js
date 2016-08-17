@@ -61,6 +61,7 @@ ls(src, function (err, tree) {
       sols.push(tree[i]); 
     }
     concat(sols, path.join(process.cwd(), 'concat.sol'));
+    console.log('printed to concat.sol');
   }
 });
 
